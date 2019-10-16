@@ -9,3 +9,5 @@
            key: "<YOUR API KEY>"
        };
    ```
+5. Using EventBrite's API, create an application that will display the first 10 events in a given category within x miles of y location, where x and y are inputs from the user. See the attached design for style specs.
+6. Please provide any runtime instructions to start your app if they go beyond setting up our own `secret.js` file and running `npm run start`.
