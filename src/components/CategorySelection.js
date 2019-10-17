@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { fetchAllCategories, fetchCategoryLocationEvents } from "../apiUtil";
+import { fetchAllCategories } from "../apiUtil";
 
 class CategorySelection extends Component {
   constructor(props) {
@@ -8,7 +8,6 @@ class CategorySelection extends Component {
       categoryList: [],
       events: []
     };
-    this.handleCategorySelection = this.handleCategorySelection.bind(this);
   }
 
   componentDidMount() {
@@ -17,29 +16,14 @@ class CategorySelection extends Component {
     });
   }
 
-  handleCategorySelection(catId) {
-    return e => {
-      e.preventDefault();
-      fetchCategoryLocationEvents(11237, 25, catId).then(({ events }) =>
-        this.setState({ events })
-      );
-    };
-  }
-
   render() {
     const categoryListLis = this.state.categoryList.map(category => {
       return (
-        <li
-          className="category-li"
-          key={category.id}
-          onClick={this.handleCategorySelection(category.id)}
-        >
+        <li className="category-li" key={category.id}>
           {category.name}
         </li>
       );
     });
-    const eventListLis = this.state.events.map(event => return <p>event here!</p>;);
-
     return <ul>{categoryListLis}</ul>;
   }
 }
